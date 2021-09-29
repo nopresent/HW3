@@ -50,7 +50,7 @@ public class Auto {
 
     private String stateTranslater(boolean name) {
         String tranclateName = "Включен";
-        if (name == false) {
+        if (!name) {
             tranclateName = "Выключен";
         }
         return tranclateName;
@@ -91,7 +91,7 @@ public class Auto {
 
     // Завести
     public void engineStart() {
-        if (isEngineState() == false) {
+        if (!isEngineState()) {
             setEngineState(true);
             System.out.println("->Заводим двигатель<-");
         } else {
@@ -102,7 +102,7 @@ public class Auto {
     // Заглушити авто
     public void engineOff() {
         System.out.println("->Глушим двигатель<-");
-        if (isEngineState() == true) {
+        if (isEngineState()) {
             while (getSpeed() > 0) {
                 setSpeed(-speedStep);
                 System.out.println("Скорость: " + speed);
@@ -117,13 +117,13 @@ public class Auto {
     // Ехать, добавляем скорость
     public void pressPedalGas() {
         System.out.println("->Пробуем увеличить скорость<-");
-        if (cruiseControl == true) {
+        if (cruiseControl) {
             System.out.println("Изменение скорости заблокировно. Выключите Сruise Control!");
         } else {
             // Добавляем +10 к текущей скорости
-            if (isEngineState() == true) {
+            if (isEngineState()) {
                 System.out.println("->Автомобиль едет<-");
-                setSpeed(10);
+                setSpeed(speedStep);
             } else {
                 System.out.println("Ошибка: Двигатель уже выключен!");
             }
